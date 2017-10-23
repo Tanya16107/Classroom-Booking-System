@@ -9,21 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox fillHeight="false" layoutX="5.0" layoutY="1.0" prefHeight="18.0" prefWidth="592.0">
-         <children>
-            <Label text="Logged in as " />
-            <Label text="abc@iiitd.ac.in" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Logout" textAlignment="CENTER" HBox.hgrow="NEVER">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
-      <Accordion layoutX="1.0" layoutY="32.0" prefHeight="366.0" prefWidth="600.0">
+      <Accordion layoutX="1.0" layoutY="35.0" prefHeight="363.0" prefWidth="600.0">
         <panes>
             <TitledPane animated="false" text="Check Availability of Room">
                <content>
@@ -65,5 +53,27 @@
           </TitledPane>
         </panes>
       </Accordion>
+      <HBox fillHeight="false" prefHeight="34.0" prefWidth="600.0">
+         <children>
+            <Label text="Logged in as ">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Label>
+            <Label text="abc@iiitd.ac.in">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Label>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Logout" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets left="300.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="2.0" left="10.0" right="10.0" top="4.0" />
+         </padding>
+      </HBox>
    </children>
 </AnchorPane>
