@@ -1,210 +1,14 @@
 import java.util.*;
 import java.io.*;
 
-abstract class User implements Serializable{
-	protected String emailID;
-	private String password;
-
-	public User(String emailID, String password){
-		this.emailID = emailID;
-		this.password = password;
-	}
-
-	@Override
-	public boolean equals(Object o){
-		User oo = (User) o;
-		return oo.getEmailID().equals(emailID) && oo.getPassword().equals(password);
-	}
-	
-	//public boolean roomIsAvailable(String room, String time, String date){
-
-	//}
-
-	public String getEmailID(){
-		return emailID;
-	}
-
-	public String getPassword(){
-		return password;
-	}
-
-	/*public viewRooms(){
-
-	}
-	*/
-
-	public abstract void viewBookedRooms();
-}
-
-class Student extends User{
-
-	private List<Course> myCourseList;
-	private List<RequestedRoom> myBookedRooms;
-	private Map<String, Course> postConditions;
-
-	public Student(String emailID, String password){
-		super(emailID, password);
-	}
-
-//	public Course searchCourse(String keyword){
-//	}
-
-	public void chooseCourse(Course c){
-	}
-
-	public void requestRoom(String purpose, int capacity){
-
-	}
-
-	public void requestRoom(String purpose, String preferredRoom, int capacity){
-
-	}
-
-	public void viewTimeTable(){
-
-	}
-
-	public void viewBookedRooms(){
-
-	}
-
-}
-
-class Admin extends User{
-	private List<RequestedRoom> requests;
-	private List<String> bookedRooms;
-
-	public Admin(String emailID, String password){
-		super(emailID, password);
-	}
-
-	public void bookRoom(String room, String time, String date){
-
-	}
-
-	public void cancel(String room, String time, String date){
-	
-	}
-
-	public void viewRequests(){
-
-	}
-
-	public void acceptRequest(RequestedRoom r){
-	
-	}
-
-	public void rejectRequest(RequestedRoom r){
-
-	}
-
-
-	public void viewBookedRooms(){
-
-	}
-
-
-}
-
-class Faculty extends User{
-	private List<String> bookedRooms;
-
-	public Faculty(String emailID, String password){
-		super(emailID, password);
-	}
-
-	public void bookRoom(String room, String time, String date){
-
-	}
-
-	public void cancel(String room, String time, String date){
-	
-	}
-
-	public void viewBookedRooms(){
-
-	}
-
-}
-
-class Room{
-	private String schedule;
-
-//	public boolean isAvailable(String time, String date){
-
-//	}
-
-//	public boolean book(String time, String date){
-
-//	}
-
-}
-
-class Course{
-	private String room;
-	private String timeSlot;
-	private String audience;
-	private String postConditions;
-
-	public String getVenue(){
-		return  room;
-	}
-
-	public String getTimeSlot(){
-		return timeSlot;
-
-	}
-	
-	public String getAudience(){
-		return audience;
-	}
-
-	public String getPostConditions(){
-		return postConditions;
-
-	}
-}
-
-class RequestedRoom{
-	private String purpose;
-	private String preferredRoom;
-	private int capacity;
-	private int timeSinceRequest;
-	private String status;
-
-	public String getPurpose(){
-		return purpose;
-
-	}
-	public String getPreferredRoom(){
-		return preferredRoom;
-
-	}
-
-	public int getCapacityOfRequiredRoom(){
-		return capacity;
-
-	}
-
-	public int getTimeSinceRequest(){
-		return timeSinceRequest;
-
-	}
-
-	public String getStatus(){
-		return status;
-
-	}
-
-	public void setStatus(String s){
-
-	}
-}
-
 class App{
 	static void mainMenu(){
 		System.out.println("1. Create User:\n1. Student\n2. Faculty\n3. Admin\n");
 		System.out.println("2. Login:\n1. Student\n2. Faculty\n3. Admin");
+	}
+
+	static void studentMenu(){
+		System.out.println("1. Logout\n2. Search for Course\n3. View Timetable\n4. Check Availability of Room\n5. Request Booking\n6. View My Bookings");
 	}
 
 	static void serialize(Object p, int c) throws IOException{
@@ -235,7 +39,7 @@ class App{
 
 	}
 
-	public static LinkedList<Student> deserializeStudentList() throws IOException, ClassNotFoundException {
+ 	static LinkedList<Student> deserializeStudentList() throws IOException, ClassNotFoundException {
 		ObjectInputStream in = null;
 		try{
 			in = new ObjectInputStream(new FileInputStream("studentList.txt"));
@@ -246,7 +50,7 @@ class App{
 		}
 	}
 
-	public static LinkedList<Faculty> deserializeFacultyList() throws IOException, ClassNotFoundException {
+	static LinkedList<Faculty> deserializeFacultyList() throws IOException, ClassNotFoundException {
 		ObjectInputStream in = null;
 		try{
 			in = new ObjectInputStream(new FileInputStream("facultyList.txt"));
@@ -257,7 +61,7 @@ class App{
 		}
 	}
 
-	public static LinkedList<Admin> deserializeAdminList() throws IOException, ClassNotFoundException {
+	static LinkedList<Admin> deserializeAdminList() throws IOException, ClassNotFoundException {
 		ObjectInputStream in = null;
 		try{
 			in = new ObjectInputStream(new FileInputStream("adminList.txt"));
@@ -271,7 +75,7 @@ class App{
 
 	public static void main(String[] args) throws Exception {
 
-		/*new 
+		/*new
 		LinkedList<Student> studentList = new LinkedList<Student>();
 		LinkedList<Faculty> facultyList = new LinkedList<Faculty>();
 		LinkedList<Admin> adminList = new LinkedList<Admin>();
@@ -279,6 +83,7 @@ class App{
 		serialize(facultyList, 2);
 		serialize(adminList, 3);
 		*/
+	
 
 
 		LinkedList<Student> studentList = deserializeStudentList();
@@ -286,6 +91,11 @@ class App{
 		LinkedList<Admin> adminList = deserializeAdminList();
 		
 		Scanner sc = new Scanner(System.in);
+		int e;
+
+		String roomName, date, fromTime, toTime;
+
+		while(true){
 		mainMenu();
 		int c = sc.nextInt();
 		int d = sc.nextInt();
@@ -341,6 +151,41 @@ class App{
 						}
 						else{
 							student = studentList.get(studentList.indexOf(student));
+							studentMenu();
+							int e = sc.nextInt();
+							switch(e){
+								case 1:{
+
+								}
+								break;
+								case 2:{
+
+								}
+								break;
+								case 3:{
+									System.out.println("Enter roomName, date, fromTime, toTime");
+									roomName = sc.next();
+									date = sc.next();
+									fromTime = sc.next();
+									toTime = sc.next();
+
+
+								}
+								break;
+								case 4:{
+
+								}
+								break;
+								case 5:{
+
+								}
+								break;
+								case 6:{
+
+								}
+								break;
+							}
+
 						}
 						break;
 					}
@@ -374,6 +219,7 @@ class App{
 
 			}
 		}
+	}
 
 		
 	}
