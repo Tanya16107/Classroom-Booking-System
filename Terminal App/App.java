@@ -5,10 +5,17 @@ class App{
 	static void mainMenu(){
 		System.out.println("1. Create User:\n1. Student\n2. Faculty\n3. Admin\n");
 		System.out.println("2. Login:\n1. Student\n2. Faculty\n3. Admin");
+		System.out.println("\n3.Close Application");
 	}
 
 	static void studentMenu(){
 		System.out.println("1. Logout\n2. Search for Course\n3. View Timetable\n4. Check Availability of Room\n5. Request Booking\n6. View My Bookings");
+	}
+	static void facultyMenu(){
+		System.out.println("1. Logout\n2. My Courses\n3. Check Availability of Room\n4. Book Room\n5. View My Bookings");
+	}
+	static void adminMenu(){
+		System.out.println("1. Logout\n2. Check Availability of Room\n3. Book Room\n4. View My Bookings\n5. View Requests");
 	}
 
 	static void serialize(Object p, int c) throws IOException{
@@ -97,12 +104,15 @@ class App{
 
 		while(true){
 		mainMenu();
+
+		boolean logout = false;
 		int c = sc.nextInt();
-		int d = sc.nextInt();
+		int d;
 		
 		switch(c){
 			case 1:
 			{
+				d = sc.nextInt();
 				System.out.print("emailID: ");
 				String emailID = sc.next();
 				System.out.print("password: ");
@@ -137,7 +147,7 @@ class App{
 			}
 			case 2:{
 				//deserialize
-
+				d = sc.nextInt();
 				System.out.print("emailID: ");
 				String emailID = sc.next();
 				System.out.print("password: ");
@@ -151,11 +161,12 @@ class App{
 						}
 						else{
 							student = studentList.get(studentList.indexOf(student));
+							while(!logout){
 							studentMenu();
-							 e = sc.nextInt();
+							e = sc.nextInt();
 							switch(e){
 								case 1:{
-
+									logout = true;
 								}
 								break;
 								case 2:{
@@ -163,11 +174,7 @@ class App{
 								}
 								break;
 								case 3:{
-									System.out.println("Enter roomName, date, fromTime, toTime");
-									roomName = sc.next();
-									date = sc.next();
-									fromTime = sc.next();
-									toTime = sc.next();
+									
 
 
 								}
@@ -185,6 +192,7 @@ class App{
 								}
 								break;
 							}
+						}
 
 						}
 						break;
@@ -198,6 +206,35 @@ class App{
 						}
 						else{
 							faculty = facultyList.get(facultyList.indexOf(faculty));
+							while(!logout){
+							facultyMenu();
+							e = sc.nextInt();
+							switch(e){
+								case 1:{
+									logout = true;
+								}
+								break;
+								case 2:{
+
+								}
+								break;
+								case 3:{
+									
+
+
+								}
+								break;
+								case 4:{
+
+								}
+								break;
+								case 5:{
+
+								}
+								break;
+								
+							}
+						}
 						}
 						break;
 					}
@@ -210,6 +247,35 @@ class App{
 						}
 						else{
 							admin = adminList.get(adminList.indexOf(admin));
+							while(!logout){
+							adminMenu();
+							e = sc.nextInt();
+							switch(e){
+								case 1:{
+									logout = true;
+								}
+								break;
+								case 2:{
+
+								}
+								break;
+								case 3:{
+									
+
+
+								}
+								break;
+								case 4:{
+
+								}
+								break;
+								case 5:{
+
+								}
+								break;
+								
+							}
+						}
 						}
 						break;
 					}
@@ -217,6 +283,9 @@ class App{
 				break;
 
 
+			}
+			case 3:{
+				System.exit(0);
 			}
 		}
 	}
