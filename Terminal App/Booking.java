@@ -2,6 +2,8 @@ import java.util.*;
 import java.io.*;
 
 public class Booking implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	String details;
 
 	GregorianCalendar start;

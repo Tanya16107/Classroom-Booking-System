@@ -152,7 +152,7 @@ class App{
 						else{
 							student = studentList.get(studentList.indexOf(student));
 							studentMenu();
-							int e = sc.nextInt();
+							 e = sc.nextInt();
 							switch(e){
 								case 1:{
 
