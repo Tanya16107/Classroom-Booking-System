@@ -11,6 +11,8 @@ public class Student extends User{
 
 	public Student(String emailID, String password){
 		super(emailID, password);
+		myCourseList = new LinkedList<Course>();
+		myBookedRooms = new LinkedList<RequestedRoom>();
 	}
 
 //	public Course searchCourse(String keyword){
@@ -19,11 +21,9 @@ public class Student extends User{
 	public void chooseCourse(Course c){
 	}
 
-	public void requestRoom(String purpose, int capacity){
 
-	}
-
-	public void requestRoom(String purpose, String preferredRoom, int capacity){
+	public void requestRoom(RequestedRoom r){
+		myBookedRooms.add(r);
 
 	}
 
@@ -32,6 +32,9 @@ public class Student extends User{
 	}
 
 	public void viewBookedRooms(){
+		for(int i=0; i<myBookedRooms.size(); i++){
+			System.out.println(myBookedRooms.get(i));
+		}
 
 	}
 

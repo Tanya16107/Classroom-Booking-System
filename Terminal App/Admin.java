@@ -9,9 +9,10 @@ public class Admin extends User{
 
 	public Admin(String emailID, String password){
 		super(emailID, password);
+		bookedRooms = new LinkedList<String>();
 	}
 
-	public void bookRoom(String room, String time, String date){
+	public void bookRoom(String room,  String fromTime, String toTime, String date){
 
 	}
 
@@ -19,9 +20,6 @@ public class Admin extends User{
 	
 	}
 
-	public void viewRequests(){
-
-	}
 
 	public void acceptRequest(RequestedRoom r){
 	
@@ -33,6 +31,9 @@ public class Admin extends User{
 
 
 	public void viewBookedRooms(){
+		for(int i=0; i<bookedRooms.size(); i++){
+			System.out.println(bookedRooms.get(i));
+		}
 
 	}
 

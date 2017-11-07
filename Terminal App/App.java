@@ -36,6 +36,11 @@ class App{
 				{out = new ObjectOutputStream(new FileOutputStream("adminList.txt"));
 				out.writeObject(p);
 				break;}
+
+				case 4:
+				{out = new ObjectOutputStream(new FileOutputStream("requestedRooms.txt"));
+				out.writeObject(p);
+				break;}
 			}
 			
 			
@@ -79,23 +84,36 @@ class App{
 		}
 	}
 
+	static LinkedList<RequestedRoom> deserializeRequestedRooms() throws IOException, ClassNotFoundException {
+		ObjectInputStream in = null;
+		try{
+			in = new ObjectInputStream(new FileInputStream("requestedRooms.txt"));
+			return (LinkedList<RequestedRoom>) in.readObject();
+		}
+		finally{
+			in.close();
+		}
+	}
+
 
 	public static void main(String[] args) throws Exception {
 
-		/*new
+		/*
 		LinkedList<Student> studentList = new LinkedList<Student>();
 		LinkedList<Faculty> facultyList = new LinkedList<Faculty>();
 		LinkedList<Admin> adminList = new LinkedList<Admin>();
 		serialize(studentList, 1);
 		serialize(facultyList, 2);
 		serialize(adminList, 3);
+		
+		LinkedList<RequestedRoom> requestedRooms = new LinkedList<RequestedRoom>();
+		serialize(requestedRooms, 4);
 		*/
-	
-
-
+		
 		LinkedList<Student> studentList = deserializeStudentList();
 		LinkedList<Faculty> facultyList = deserializeFacultyList();
 		LinkedList<Admin> adminList = deserializeAdminList();
+		LinkedList<RequestedRoom> requestedRooms = deserializeRequestedRooms();
 		
 		Scanner sc = new Scanner(System.in);
 		int e;
@@ -170,24 +188,47 @@ class App{
 								}
 								break;
 								case 2:{
+									System.out.println("Enter keyword: ");
+									String keyword = sc.next();
 
 								}
 								break;
 								case 3:{
-									
-
-
+									student.viewTimeTable();
 								}
 								break;
 								case 4:{
+									System.out.println("Room name? ");
+									String s_room = sc.next();
+									System.out.println("Date? ");
+									String s_room_date = sc.next();
+									System.out.println("From time? ");
+									String s_from_time = sc.next();
+									System.out.println("To time? ");
+									String s_to_time = sc.next();
+									//add code;
+
+
 
 								}
 								break;
 								case 5:{
+									System.out.println("Preferred Room? ");
+									String p_room = sc.next();
+									System.out.println("Capacity? ");
+									int p_cap = sc.nextInt();
+									sc.nextLine();
+									System.out.println("Purpose: ");
+									String purpose = sc.next();
+									RequestedRoom r = new RequestedRoom(p_room, p_cap, purpose);
+									student.requestRoom(r);
+									requestedRooms.add(r);
+									serialize(requestedRooms, 4);
 
 								}
 								break;
 								case 6:{
+									student.viewBookedRooms();
 
 								}
 								break;
@@ -195,6 +236,8 @@ class App{
 						}
 
 						}
+						serialize(studentList, 1);
+						studentList = deserializeStudentList();
 						break;
 					}
 					case 2:{
@@ -215,20 +258,40 @@ class App{
 								}
 								break;
 								case 2:{
+									faculty.viewMyCourses();
 
 								}
 								break;
 								case 3:{
-									
+									System.out.println("Room name? ");
+									String s_room = sc.next();
+									System.out.println("Date? ");
+									String s_room_date = sc.next();
+									System.out.println("From time? ");
+									String s_from_time = sc.next();
+									System.out.println("To time? ");
+									String s_to_time = sc.next();
+									//add code;
 
 
 								}
 								break;
 								case 4:{
+									System.out.println("Room name? ");
+									String b_room = sc.next();
+									System.out.println("Date? ");
+									String b_room_date = sc.next();
+									System.out.println("From time? ");
+									String b_from_time = sc.next();
+									System.out.println("To time? ");
+									String b_to_time = sc.next();
+									faculty.bookRoom(b_room, b_from_time, b_to_time, b_room_date);
+									
 
 								}
 								break;
 								case 5:{
+									faculty.viewBookedRooms();
 
 								}
 								break;
@@ -236,6 +299,8 @@ class App{
 							}
 						}
 						}
+						serialize(facultyList, 2);
+						facultyList = deserializeFacultyList();
 						break;
 					}
 					case 3:{
@@ -256,21 +321,43 @@ class App{
 								}
 								break;
 								case 2:{
+									System.out.println("Room name? ");
+									String s_room = sc.next();
+									System.out.println("Date? ");
+									String s_room_date = sc.next();
+									System.out.println("From time? ");
+									String s_from_time = sc.next();
+									System.out.println("To time? ");
+									String s_to_time = sc.next();
+									//add code;
 
 								}
 								break;
 								case 3:{
+									System.out.println("Room name? ");
+									String b_room = sc.next();
+									System.out.println("Date? ");
+									String b_room_date = sc.next();
+									System.out.println("From time? ");
+									String b_from_time = sc.next();
+									System.out.println("To time? ");
+									String b_to_time = sc.next();
+									admin.bookRoom(b_room, b_from_time, b_to_time, b_room_date);
 									
 
 
 								}
 								break;
 								case 4:{
+									admin.viewBookedRooms();
 
 								}
 								break;
 								case 5:{
-
+									requestedRooms = deserializeRequestedRooms();
+									for(int i=0; i<requestedRooms.size(); i++){
+										System.out.println(requestedRooms.get(i));
+									}
 								}
 								break;
 								
@@ -280,6 +367,8 @@ class App{
 						break;
 					}
 				}
+				serialize(adminList, 3);
+				adminList = deserializeAdminList();
 				break;
 
 
