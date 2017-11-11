@@ -1,27 +1,68 @@
 import java.util.*;
 import java.io.*;
 
-public class Course{
-	private String room;
-	private String timeSlot;
-	private String audience;
+class Slot implements Serializable{
+	private String category;
+	private String venue;
+	private String time;
+
+	public Slot(String category, String venue, String time){
+		this.category = category;
+		this.venue = venue;
+		this.time = time;
+	}
+
+	public String toString(){
+		return category+" "+time+" "+venue;
+	}
+}
+
+public class Course implements Serializable{
+	private String name;
+	private String code;
+	private String type;
+	private String instructor;
+	private int credits;
+	private String preConditions;
 	private String postConditions;
+	private LinkedList[] schedule = new LinkedList[5];  // 0 = Monday, 1 = Tuesday ...
 
-	public String getVenue(){
-		return  room;
-	}
-
-	public String getTimeSlot(){
-		return timeSlot;
-
-	}
-	
-	public String getAudience(){
-		return audience;
-	}
-
-	public String getPostConditions(){
-		return postConditions;
+	public Course(String name, String code, String type, String instructor, int credits, String preConditions, String postConditions){
+		this.name = name;
+		this.code = code;
+		this.type = type;
+		this.instructor = instructor;
+		this.credits = credits;
+		this.preConditions = preConditions;
+		this.postConditions = postConditions;
+		for(int i=0; i<5; i++){
+			schedule[i] = new LinkedList();
+		}
+		
 
 	}
+
+	public void buildSchedule(int i, Slot s){
+		schedule[i].add(s);
+	}
+
+	public String toString(){
+		return name+" "+code+" "+type+" "+instructor+" "+String.valueOf(credits);
+
+	}
+
+	public void printSchedule(){
+		for(int i=0; i<5; i++){
+			System.out.print(i+"->");  //day : 0 = Monday, 1= Tuesday...
+			LinkedList l = schedule[i];
+			for (int j = 0; j < l.size(); j++) {
+            System.out.println(l.get(j));
+        }
+
+			
+		}
+	}
+
+
+
 }
