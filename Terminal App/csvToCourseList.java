@@ -89,7 +89,7 @@ class csvtoCourse {
 				}
 
 				try{
-				String[] k = products.get("Tut Day$Time$Venue").split(" : ");
+				String[] k = products.get("Tut Day$Time$Venue").split(" :");
 				
 				for(int i=0; i<k.length; i++){
 					try{
@@ -131,7 +131,7 @@ class csvtoCourse {
 
 				db_Courses.add(course);
 				
-				// perform program logic here
+		
 				//System.out.println(ii +" "+b+" "+c+" "+d+" "+e+" credits");
 				//System.out.println(a);
 				/*
@@ -163,13 +163,14 @@ class csvtoCourse {
 		}
 
 		serialize(db_Courses);
-		/*
+		/*for check
 		for(int i=0; i<db_Courses.size(); i++){
 			Course c = db_Courses.get(i);
 			System.out.println(c);
 			c.printSchedule();
 		}
 		*/
+		
 		
 	}
 
