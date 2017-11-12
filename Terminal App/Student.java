@@ -17,14 +17,19 @@ public class Student extends User{
 
 //	public Course searchCourse(String keyword){
 //	}
-
+	public void AddMandatory(Course c){
+	myCourseList.add(c);	
+	}
 	public void chooseCourse(Course c){
 	}
-
+	
 
 	public void requestRoom(RequestedRoom r){
 		myBookedRooms.add(r);
 
+	}
+	public List<Course> getCourses(){
+		return myCourseList;	
 	}
 
 	public void viewTimeTable(){

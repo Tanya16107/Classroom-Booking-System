@@ -11,7 +11,12 @@ class Slot implements Serializable{
 		this.venue = venue;
 		this.time = time;
 	}
-
+	public String getTime(){
+		return time;
+	}
+	public String getCatVen(){
+		return venue+" "+category;
+	}
 	public String toString(){
 		return category+" "+time+" "+venue;
 	}
@@ -41,11 +46,15 @@ public class Course implements Serializable{
 		
 
 	}
-
+	public LinkedList[] getSchedule(){
+		return schedule;
+	}
 	public void buildSchedule(int i, Slot s){
 		schedule[i].add(s);
 	}
-
+	public String getCode(){
+		return code;
+	}
 	public String toString(){
 		return name+" "+code+" "+type+" "+instructor+" "+String.valueOf(credits);
 
@@ -56,9 +65,9 @@ public class Course implements Serializable{
 			System.out.print(i+"->");  //day : 0 = Monday, 1= Tuesday...
 			LinkedList l = schedule[i];
 			for (int j = 0; j < l.size(); j++) {
-            System.out.println(l.get(j));
+            System.out.print(l.get(j));
         }
-
+	System.out.println();
 			
 		}
 	}
