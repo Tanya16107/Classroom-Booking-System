@@ -59,7 +59,9 @@ public class Course implements Serializable{
 		return name+" "+code+" "+type+" "+instructor+" "+String.valueOf(credits);
 
 	}
-
+	public String getPostConditions(){
+		return postConditions;	
+	}
 	public void printSchedule(){
 		for(int i=0; i<5; i++){
 			System.out.print(i+"->");  //day : 0 = Monday, 1= Tuesday...
