@@ -5,7 +5,7 @@ import java.io.*;
 
 
 
-class csvtoCourse {
+public class csvtoCourse {
 
 	static void serialize(List<Course> db_Courses) throws IOException{
 		ObjectOutputStream out = null;
