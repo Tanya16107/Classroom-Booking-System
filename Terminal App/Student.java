@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Student extends User{
 
-	private static final long serialVersionUID = 21L;
+	private static final long serialVersionUID = 1L;
 
 	private List<Course> myCourseList;
 	private List<RequestedRoom> myBookedRooms;

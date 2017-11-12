@@ -2,6 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class RequestedRoom implements Serializable{
+	private static final long serialVersionUID = 7L;
 	private String purpose;
 	private String preferredRoom;
 	private int capacity;

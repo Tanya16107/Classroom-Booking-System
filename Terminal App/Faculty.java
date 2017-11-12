@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Faculty extends User{
-	private static final long serialVersionUID = 20L;
+	private static final long serialVersionUID = 2L;
 	private List<String> bookedRooms;
 	private List<Course> myCourseList;
 

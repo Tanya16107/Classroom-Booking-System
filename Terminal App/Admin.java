@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Admin extends User{
 
-	private static final long serialVersionUID = 30L;
+	private static final long serialVersionUID = 3L;
 	private List<RequestedRoom> requests;
 	private List<String> bookedRooms;
 
