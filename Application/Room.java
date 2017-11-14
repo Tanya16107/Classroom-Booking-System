@@ -16,11 +16,85 @@ public class Room{
 	public void Show(int Week)
 	{
 		Time T=new Time();
-		T.ViewRoom(this,Week);
+		String[][] Table=T.ViewRoom(this,Week);
+
+			for(int i=0;i<7;i++)
+			{
+				for(int j=0;j<20;j++)
+					System.out.print(Table[i][j]+" ");
+				System.out.println();
+			}
 	}
 	public LinkedList<Datime> getBook()
 	{
 		return SpecialBooking;
+	}
+	public boolean CheckClash(String time,String date)
+	{
+		Datime D=new Datime(date,time);
+		int T=D.retWeek();
+		Time X=new Time();
+		String[][] LEL=X.ViewRoom(this,T);
+		int Day=D.retDay();
+		String[] S1=time.trim().split("-");
+		String[] S2=S1[0].trim().split(":");
+		String[] S3=S1[1].trim().split(":");
+		int A1=Integer.parseInt(S2[0]);
+		int A2=Integer.parseInt(S3[0]);
+		if(A1>=8)
+		{
+			if(S2[1].equals("00"))
+			{
+				A1=(A1*2)-16;
+			}
+			if(S2[1].equals("30"))
+			{
+				A1=(A1*2)-16+1;
+			}
+		}
+		else
+		{
+			if(S2[1].equals("00"))
+			{
+				A1=(A1-1)*2+10;
+			}
+			if(S2[1].equals("30"))
+			{
+				A1=(A1-1)*2+10+1;
+			}
+
+		}
+		if(A2>=8)
+		{
+			if(S3[1].equals("00"))
+			{
+				A2=(A2*2)-16;
+			}
+			if(S3[1].equals("30"))
+			{
+				A2=(A2*2)-16+1;
+			}
+		}
+		else
+		{
+			if(S3[1].equals("00"))
+			{
+				A2=(A2-1)*2+10;
+			}
+			if(S3[1].equals("30"))
+			{
+				A2=(A2-1)*2+10+1;
+			}
+
+		}
+		boolean flag=true;
+		for(int i=A1;i<A2;i++)
+		{
+			if(!LEL[Day][i].equals("      "))
+				flag=false;
+		}
+		return flag;
+
 	}
 	public static void main(String[] args)
 	{
@@ -46,6 +120,7 @@ public class Room{
 		M.Show(1);
 		M.book("10:00-11:00","9/8/17");
 		M.Show(2);
+		System.out.println(M.CheckClash("12:00-1:00","17/11/17"));
 	}		
 
 /*	public boolean isAvailable(String fromtime, String date){

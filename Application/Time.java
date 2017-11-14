@@ -2,15 +2,15 @@ import java.lang.*;
 import java.io.*;
 import java.util.*;
 public class Time{
-	public void ViewRoom(Room S,int Week)
+	public String[][] ViewRoom(Room S,int Week)
 	{
-
+		
+			String[][] Table=new String[7][30];
 		try{
 			List<Course> D=new ArrayList<Course>();
 			FileInputStream F=new FileInputStream("db_Courses.txt");
 			ObjectInputStream O=new ObjectInputStream(F);
 			D=(List<Course>)O.readObject();
-			String[][] Table=new String[7][30];
 			for(int i=0;i<7;i++)
 			{
 				for(int j=0;j<30;j++)
@@ -431,15 +431,18 @@ public class Time{
 								}
 				}
 			}
+			/*
 			for(int i=0;i<7;i++)
 			{
 				for(int j=0;j<20;j++)
 					System.out.print(Table[i][j]+" ");
 				System.out.println();
-			}
+			}*/
 		}catch(Exception E){
 			E.printStackTrace();
 		}	
+		
+			return Table;
 	}
 	public void ViewStud(Student S)
 	{
