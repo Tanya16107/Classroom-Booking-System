@@ -1,5 +1,11 @@
 import java.util.*;
 import java.io.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.IntegerProperty;
+
+
 
 public class RequestedRoom implements Serializable{
 	private static final long serialVersionUID = 7L;
@@ -13,6 +19,7 @@ public class RequestedRoom implements Serializable{
 		this.preferredRoom = preferredRoom;
 		this.capacity = capacity;
 		this.purpose = purpose;
+
 	}
 
 	public String getPurpose(){
@@ -36,6 +43,26 @@ public class RequestedRoom implements Serializable{
 
 	public String getStatus(){
 		return status;
+
+	}
+
+
+	public StringProperty getPurposeProperty(){
+		return new SimpleStringProperty(purpose);
+
+	}
+	public StringProperty getPreferredRoomProperty(){
+		return new SimpleStringProperty(preferredRoom);
+
+	}
+
+	public IntegerProperty getCapacityProperty(){
+		return new SimpleIntegerProperty(capacity);
+
+	}
+
+	public StringProperty getStatusProperty(){
+		return new SimpleStringProperty(status);
 
 	}
 
