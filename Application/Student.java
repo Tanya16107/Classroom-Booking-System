@@ -7,7 +7,6 @@ public class Student extends User{
 
 	private List<Course> myCourseList;
 	private List<RequestedRoom> myBookedRooms;
-	private Map<String, Course> postConditions;
 
 	public Student(String emailID, String password){
 		super(emailID, password);
@@ -33,7 +32,8 @@ public class Student extends User{
 	}
 
 	public void viewTimeTable(){
-
+		Time T=new Time();
+		T.ViewStud(this);
 	}
 
 	public void viewBookedRooms(){
@@ -41,6 +41,25 @@ public class Student extends User{
 			System.out.println(myBookedRooms.get(i));
 		}
 
+	}
+	public static void main(String[] args)
+	{
+		try{
+			List<Course> L=new ArrayList<Course>();
+			FileInputStream F=new FileInputStream("db_Courses.txt");
+			ObjectInputStream O=new ObjectInputStream(F);
+			L=(List<Course>)O.readObject();
+			Student S=new Student("lsd","69");
+			S.AddMandatory(L.get(0));
+			S.AddMandatory(L.get(1));
+			S.AddMandatory(L.get(2));
+			S.AddMandatory(L.get(12));
+			S.AddMandatory(L.get(6));
+			S.viewTimeTable();
+		}catch(Exception E)
+		{
+			E.printStackTrace();
+		}
 	}
 
 }
