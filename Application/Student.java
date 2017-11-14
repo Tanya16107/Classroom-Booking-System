@@ -42,6 +42,11 @@ public class Student extends User{
 		}
 
 	}
+	
+	public ObservableList<RequestedRoom> getMyBookedRooms(){
+		return FXCollections.observableList(myBookedRooms);
+
+	}
 	public static void main(String[] args)
 	{
 		try{
