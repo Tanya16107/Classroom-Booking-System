@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminController">
    <children>
       <Accordion layoutX="1.0" layoutY="35.0" prefHeight="363.0" prefWidth="594.0">
         <panes>
@@ -294,12 +294,12 @@
                   <Insets top="5.0" />
                </HBox.margin>
             </Label>
-            <Label text="abc@iiitd.ac.in">
+            <Label fx:id="email" text="abc@iiitd.ac.in">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Logout" textAlignment="CENTER">
+            <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logout" prefWidth="100.0" text="Logout" textAlignment="CENTER">
                <HBox.margin>
                   <Insets left="300.0" />
                </HBox.margin>
