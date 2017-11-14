@@ -102,12 +102,29 @@ public class loginController
 				}
 				else{
 					student = studentList.get(studentList.indexOf(student));
+					Stage stage =(Stage) loginButton.getScene().getWindow(); 
+
+					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("student_home.fxml"));   
+					Parent root = fxmlLoader.load();          
+					StudentController sc = fxmlLoader.<StudentController>getController();
 					
-					Stage stage =(Stage) loginButton.getScene().getWindow();; 
-     				Parent root = FXMLLoader.load(getClass().getResource("student_home.fxml"));;
+					sc.setUp(student, studentList); 
+					Scene scene = new Scene(root); 
+					stage.setScene(scene);    
+					stage.show();   
+
+
+
+      				/*
+
+					System.out.println(student.getEmailID());
+					studentController sc = new studentController(student);
+					
+     				Parent root = FXMLLoader.load(getClass().getResource("student_home.fxml"));
      				Scene scene = new Scene(root);
       				stage.setScene(scene);
       				stage.show();
+      				*/
 					/*
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Information Dialog");
@@ -133,11 +150,22 @@ public class loginController
 				}
 				else{
 					admin = adminList.get(adminList.indexOf(admin));
+
+					Stage stage =(Stage) loginButton.getScene().getWindow();
+					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("admin.fxml"));
+					Parent root = fxmlLoader.load();  
+					AdminController ac = fxmlLoader.<AdminController>getController();
+					ac.setUp(admin);
+     				Scene scene = new Scene(root);
+      				stage.setScene(scene);
+      				stage.show();
+      				/*
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Information Dialog");
 					alert.setHeaderText(null);
 					alert.setContentText("Login Successful!");
 					alert.showAndWait();
+					*/
 					return;
 				}
 		}
@@ -156,11 +184,26 @@ public class loginController
 				}
 				else{
 					faculty = facultyList.get(facultyList.indexOf(faculty));
+
+      				Stage stage =(Stage) loginButton.getScene().getWindow();
+					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("faculty.fxml"));
+					Parent root = fxmlLoader.load();  
+					FacultyController fc = fxmlLoader.<FacultyController>getController();
+					fc.setUp(faculty);
+     				Scene scene = new Scene(root);
+      				stage.setScene(scene);
+      				stage.show();
+
+
+
+
+      				/*
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Information Dialog");
 					alert.setHeaderText(null);
 					alert.setContentText("Login Successful!");
 					alert.showAndWait();
+					*/
 					return;
 				}
 		}
@@ -213,6 +256,8 @@ public class loginController
 					
 					in = new ObjectInputStream(new FileInputStream("studentList.txt"));
 					LinkedList<Student> studentList = (LinkedList<Student>) in.readObject();
+
+					if(studentList.indexOf(newUser)==-1){
 					
 					//add user 
 					studentList.add(newUser);
@@ -222,6 +267,14 @@ public class loginController
 					ObjectOutputStream out = null;
 					out = new ObjectOutputStream(new FileOutputStream("studentList.txt"));
 					out.writeObject(studentList);
+					}
+
+					else{
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setHeaderText(null);
+						alert.setContentText("User already exists!");
+						alert.showAndWait();
+					}
 					return;
 				}
 			}
@@ -234,7 +287,7 @@ public class loginController
 					in = new ObjectInputStream(new FileInputStream("adminList.txt"));
 					LinkedList<Admin> adminList = (LinkedList<Admin>) in.readObject();
 					
-					 
+					 if(adminList.indexOf(newUser)==-1){
 					//add user 
 					adminList.add(newUser);
 					
@@ -243,6 +296,15 @@ public class loginController
 					ObjectOutputStream out = null;
 					out = new ObjectOutputStream(new FileOutputStream("adminList.txt"));
 					out.writeObject(adminList);
+
+					}
+
+					else{
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setHeaderText(null);
+						alert.setContentText("User already exists!");
+						alert.showAndWait();
+					}
 					return;
 
 			}
@@ -256,7 +318,7 @@ public class loginController
 					LinkedList<Faculty> facultyList = (LinkedList<Faculty>) in.readObject();
 					
 				
-					 
+					if(facultyList.indexOf(newUser)==-1){
 					//add user 
 					facultyList.add(newUser);
 					
@@ -265,6 +327,14 @@ public class loginController
 					ObjectOutputStream out = null;
 					out = new ObjectOutputStream(new FileOutputStream("facultyList.txt"));
 					out.writeObject(facultyList);
+					}
+
+					else{
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setHeaderText(null);
+						alert.setContentText("User already exists!");
+						alert.showAndWait();
+					}
 					return;
 			}
 			}
