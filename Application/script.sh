@@ -1,5 +1,7 @@
 #!/bin/bash  
-
+javac StudentController.java
+javac FacultyController.java
+javac AdminController.java
 javac Admin.java
 javac AdminHome.java
 javac App.java
