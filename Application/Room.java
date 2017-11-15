@@ -30,7 +30,7 @@ public class Room{
 		return SpecialBooking;
 	}
 	public boolean CheckClash(String time,String date)
-	{
+	{//returns true if available 
 		Datime D=new Datime(date,time);
 		int T=D.retWeek();
 		Time X=new Time();
