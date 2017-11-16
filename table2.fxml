@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Apple2">
+   <content>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1542.0">
+         <children>
+            <TableView fx:id="tb" layoutX="130.0" layoutY="84.0" mouseTransparent="true" prefHeight="199.0" prefWidth="1404.0">
+              <columns>
+                <TableColumn fx:id="tb1" editable="false" prefWidth="70.0" sortable="false" text="8:00" />
+                <TableColumn fx:id="tb2" editable="false" prefWidth="70" sortable="false" text="8:30" />
+                  <TableColumn fx:id="tb3" editable="false" prefWidth="70.0" sortable="false" text="9:00" />
+                  <TableColumn fx:id="tb4" editable="false" prefWidth="70.0" sortable="false" text="9:30" />
+                  <TableColumn fx:id="tb5" editable="false" prefWidth="70.0" sortable="false" text="10:00" />
+                  <TableColumn fx:id="tb6" editable="false" prefWidth="70.0" sortable="false" text="10:30" />
+                  <TableColumn fx:id="tb7" editable="false" prefWidth="70.0" sortable="false" text="11:00" />
+                  <TableColumn fx:id="tb8" editable="false" prefWidth="70.0" sortable="false" text="11:30" />
+                  <TableColumn fx:id="tb9" editable="false" prefWidth="70.0" sortable="false" text="12:00" />
+                  <TableColumn fx:id="tb10" editable="false" prefWidth="70.0" sortable="false" text="12:30" />
+                  <TableColumn fx:id="tb11" editable="false" prefWidth="70.0" sortable="false" text="1:00" />
+                  <TableColumn fx:id="tb12" editable="false" prefWidth="70.0" sortable="false" text="1:30" />
+                  <TableColumn fx:id="tb13" editable="false" prefWidth="70.0" sortable="false" text="2:00" />
+                  <TableColumn fx:id="tb14" editable="false" prefWidth="70.0" sortable="false" text="2:30" />
+                  <TableColumn fx:id="tb15" editable="false" prefWidth="70.0" sortable="false" text="3:00" />
+                  <TableColumn fx:id="tb16" editable="false" prefWidth="70.0" sortable="false" text="3:30" />
+                  <TableColumn fx:id="tb17" editable="false" prefWidth="70.0" sortable="false" text="4:00" />
+                  <TableColumn fx:id="tb18" editable="false" prefWidth="70.0" sortable="false" text="4:30" />
+                  <TableColumn fx:id="tb19" editable="false" prefWidth="70.0" sortable="false" text="5:00" />
+                  <TableColumn fx:id="tb20" editable="false" prefWidth="70.0" sortable="false" text="5:30" />
+              </columns>
+            </TableView>
+            <Button layoutX="387.0" layoutY="492.0" mnemonicParsing="false" onAction="#LOL" text="Button" />
+            <Label layoutX="26.0" layoutY="117.0" text="Monday" />
+            <Label layoutX="26.0" layoutY="139.0" text="Tuesday" />
+            <Label layoutX="26.0" layoutY="163.0" text="Wednesday" />
+            <Label layoutX="24.0" layoutY="187.0" text="Thursday" />
+            <Label layoutX="25.0" layoutY="210.0" prefHeight="16.0" prefWidth="61.0" text="Friday" />
+            <Label layoutX="26.0" layoutY="230.0" text="Saturday" />
+            <Label layoutX="26.0" layoutY="256.0" text="Sunday" />
+            <Label layoutX="663.0" layoutY="31.0" prefHeight="40.0" prefWidth="226.0" text="TIME TABLE" textAlignment="CENTER">
+               <font>
+                  <Font name="FreeSans Bold" size="36.0" />
+               </font>
+            </Label>  
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
