@@ -108,7 +108,7 @@ public class Course implements Serializable{
 		this.credits = credits;
 		this.preConditions = preConditions;
 		this.postConditions = postConditions;
-		for(int i=0; i<5; i++){
+		for(int i=0; i<7; i++){
 			schedule[i] = new LinkedList();
 		}
 	}
