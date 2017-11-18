@@ -79,6 +79,9 @@ class Slot implements Serializable{
 	}
 }
 
+/**
+	*The Course class keeps record of individual courses
+*/
 public class Course implements Serializable{
 	private static final long serialVersionUID = 6L;
 	private String name;
@@ -88,8 +91,15 @@ public class Course implements Serializable{
 	private int credits;
 	private String preConditions;
 	private String postConditions;
-	private LinkedList[] schedule = new LinkedList[5];  // 0 = Monday, 1 = Tuesday ...
 
+	/**
+	*schedule of a room is an Array of LinkedLists
+	*/
+	private LinkedList[] schedule = new LinkedList[7];  // 0 = Monday, 1 = Tuesday ...
+
+	/**
+	*Class constructor
+	*/
 	public Course(String name, String code, String type, String instructor, int credits, String preConditions, String postConditions){
 		this.name = name;
 		this.code = code;
@@ -103,22 +113,44 @@ public class Course implements Serializable{
 		}
 	}
 
+	/**
+	*Getter method for schedule of course
+	*@return array of linked lists
+	*/
 	public LinkedList[] getSchedule(){
 		return schedule;
 	}
 
+
+	/**
+	*Method for making schedule of a course
+	*@param i day of week, with 0 as Monday
+	*@param s slot to be added - venue, day, time
+	*/
 	public void buildSchedule(int i, Slot s){
 		schedule[i].add(s);
 	}
 
+	/**
+	*Getter method for code of course
+	*@return course code
+	*/
 	public String getCode(){
 		return code;
 	}
 
+	/**
+	*Getter method for name of course
+	*@return course name
+	*/
 	public String getName(){
 		return name;
 	}
 
+	/**
+	*Getter method for instructor of course
+	*@return course instructor
+	*/
 	public String getInstructor(){
 		return instructor;
 	}
@@ -128,12 +160,16 @@ public class Course implements Serializable{
 
 	}
 
+	/**
+	*Getter method for post-conditions of course
+	*@return course post-conditions
+	*/
 	public String getPostConditions(){
 		return postConditions;	
 	}
 
 	public void printSchedule(){
-		for(int i=0; i<5; i++){
+		for(int i=0; i<7; i++){
 			System.out.print(i+"->");  //day : 0 = Monday, 1= Tuesday...
 			LinkedList l = schedule[i];
 			for (int j = 0; j < l.size(); j++) {
@@ -144,9 +180,14 @@ public class Course implements Serializable{
 		}
 	}
 
+	/**
+	*A method to check if two courses clash
+	*@param c Course to be checked for clash with
+	*@return true if courses clash, false otherwise
+	*/
 	public boolean clashCheck(Course c){
 		LinkedList[] c_schedule = c.getSchedule();
-		for(int i=0; i<5; i++){
+		for(int i=0; i<7; i++){
 			//System.out.println("Day "+i);
 			LinkedList l = this.schedule[i];
 			for(int j=0; j<l.size(); j++){

@@ -1,7 +1,18 @@
 import java.lang.*;
 import java.io.*;
 import java.util.*;
+
+/**
+	*The Time class provides the personalised calendar for each student and individual calendar for each room
+*/
 public class Time{
+
+	/**
+	*A method for viewing calendar of room for a particular week
+	*@param S the room whose calendar is to be viewed
+	*@param Week the week number of the Monsoon semester
+	*@return a 2-D Array of calendar data
+	*/
 	public String[][] ViewRoom(Room S,int Week)
 	{
 		
@@ -444,6 +455,13 @@ public class Time{
 		
 			return Table;
 	}
+
+
+	/**
+	*A method for viewing time table of a student
+	*@param S the Student who wants to view his/her time-table
+	*@return a 2-D Array of time-table data
+	*/
 	public String[][] ViewStud(Student S)
 	{
 

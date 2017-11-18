@@ -8,7 +8,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
-
+/**
+	*The Login class is the point of entry to the application
+*/
 public class Login extends Application
 {
 	public static void main(String[] args) 

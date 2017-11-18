@@ -1,14 +1,26 @@
 import java.util.*;
 import java.io.*;
 
+/**
+	*The Datime class is a custom Date and Time class
+*/
 public class Datime implements Serializable{
 	private String Date;
 	private String Time;
+
+	/**
+	*Class constructor
+	*/
 	public Datime(String d,String t)
 	{
 		Date=d;
 		Time=t;
 	}
+
+	/**
+	*A method to know Day of week from Date
+	*@return int corresponding to day of week - 0 : Monday, ...
+	*/
 	public int retDay()
 	{
 		String S[]=Date.trim().split("/");
@@ -46,6 +58,11 @@ public class Datime implements Serializable{
 			D="Sunday";*/
 		return X;
 	}
+
+	/**
+	*A method to know week number on which the date falls
+	*@return int corresponding to week number
+	*/
 	public int retWeek()
 	{
 		String S[]=Date.trim().split("/");
@@ -70,15 +87,30 @@ public class Datime implements Serializable{
 		return X+1;
 
 	}
+
+	/**
+	*Getter method for time
+	*@return time in String format
+	*/
 	public String retTime()
 	{
 		return this.Time;
 	}
+
+	/**
+	*Getter method for date
+	*@return date in String format
+	*/
 	public String retDate()
 	{
 		return this.Date;
 	}
 
+	/**
+	*A method to know if the date and time are same
+	*@param o the Date and Time to be compared to
+	*@return true if they're same, false otherwise
+	*/
 	@Override
 	public boolean equals(Object o){
 		Datime mm = (Datime) o;

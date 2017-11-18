@@ -22,6 +22,10 @@ import javafx.stage.Stage;
 
 import javafx.scene.Parent;
 
+
+/**
+	*This is the controller class for signup.fxml
+*/
 public class loginController
 {
 	@FXML
@@ -62,6 +66,10 @@ public class loginController
 	{
 	}
 	
+
+	/**
+	*Action taken upon clicking the Login button
+	*/
 	@FXML
 	private void login() throws Exception
 	{	
@@ -216,11 +224,17 @@ public class loginController
 		
 	}
 
+	/**
+	*A method for ensuring that the user has selected his/her User type
+	*/
 	@FXML
 	private boolean userTypeSelected(){
 		return sel_admin.isSelected() || sel_student.isSelected() || sel_faculty.isSelected();
 	}
-
+	
+	/**
+	*Action taken upon clicking the Sign Up button
+	*/
 	@FXML
 	public void signUp() throws Exception{ 
 		Stage stage =(Stage) signUpButton.getScene().getWindow();

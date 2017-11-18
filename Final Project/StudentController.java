@@ -608,12 +608,18 @@ public class StudentController
 
 	}
 
+	/**
+	*Action executed upon clicking the settings button
+	*/
 	@FXML
 	public void settings(){
 		homeView.setVisible(false);
 		settingsView.setVisible(true);
 	}
 
+	/**
+	*Action executed upon clicking the change password button
+	*/
 	@FXML
 	public void changePassword() throws Exception{
 		student.setPassword(newPassword.getText());
@@ -623,7 +629,9 @@ public class StudentController
 		out.writeObject(studentList);
 	}
 
-
+	/**
+	*Action executed upon clicking the delete account button
+	*/
 	@FXML
 	public void delAccount() throws Exception{
 		studentList.remove(student);
@@ -632,12 +640,20 @@ public class StudentController
 		logout();
 	}
 
+	/**
+	*Action executed upon clicking the return button
+	*/
 	@FXML
 	public void backToHome(){
 		settingsView.setVisible(false);
 		homeView.setVisible(true);
 	}
 
+	/**
+	*A method to pass on a specific user from different controllers
+	*@param s User whose dashboard is to be loaded
+	*@param studentList database of students
+	*/
 	@FXML
 	public void setUp(Student s, LinkedList<Student> studentList) throws Exception{
 		this.student = s;
@@ -697,6 +713,9 @@ public class StudentController
 		searchResults.setVisible(false);
 	}
 
+	/**
+	*Action executed upon clicking the logout button
+	*/
 	@FXML
 	public void logout() throws Exception{
 		Stage stage =(Stage) logoutButton.getScene().getWindow(); 
@@ -706,6 +725,9 @@ public class StudentController
 		stage.show();
 	}
 
+	/**
+	*Action executed upon clicking the request booking button
+	*/
 	@FXML
 	public void reqRoomButton() throws Exception{
 
@@ -774,7 +796,9 @@ public class StudentController
 		}
 		
 	
-
+	/**
+	*Action executed upon clicking the refresh button
+	*/
 	@FXML
 	public void refresh() throws Exception{
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("requestedRooms.txt"));
@@ -793,7 +817,10 @@ public class StudentController
 
 		bookingsTable.setItems(meriRequests);
 	}
-	
+		
+	/**
+	*Action executed upon clicking the Check Availability button
+	*/
 	@FXML
 	public void checkAvail() throws Exception{
 
@@ -830,6 +857,9 @@ public class StudentController
 
 	}
 
+	/**
+	*Action executed upon clicking the add course button
+	*/
 	@FXML
 	public void addCourseAction() throws Exception
 	{
@@ -894,6 +924,9 @@ public class StudentController
 
 	} 
 
+	/**
+	*Action executed upon clicking the search for courses button
+	*/
 	@FXML
 	public void searchButton() throws Exception
 	{
@@ -920,6 +953,9 @@ public class StudentController
 
     }
 
+    /**
+	*Action executed upon clicking the next week button
+	*/
     @FXML 
 	public void nextWeek() throws Exception
 	{
@@ -945,8 +981,11 @@ public class StudentController
     	}
     }
     catch(Exception e){}
-	}
+	}	
 
+	/**
+	*Action executed upon clicking the previous week button
+	*/
 	@FXML 
 	public void prevWeek() throws Exception
 	{
@@ -974,6 +1013,9 @@ public class StudentController
     catch(Exception e){}
 	}
 
+	/**
+	*Action executed upon selecting a room from the combo box
+	*/
 	@FXML 
 	public void loadRoom() throws Exception
 	{
@@ -995,7 +1037,11 @@ public class StudentController
     }
     catch(Exception e){}
 	}
-		@FXML
+
+	/**
+	*A method to display dates corresponding to the week
+	*/
+	@FXML
 	public void weekDates(int w){
 		switch(w){
 			case 1:{

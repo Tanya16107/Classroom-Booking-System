@@ -1,17 +1,28 @@
 import java.util.*;
 import java.io.*;
 
-
+/**
+	*The Room class represents a room and keeps record of bookings apart from regular classes in the room
+*/
 
 public class Room implements Serializable{
 	private String Name;
 	private LinkedList<Datime> SpecialBooking;
+
+	/**
+	*Class constructor
+	*/
 	public Room(String Name)
 	{
 		this.Name=Name;
 		SpecialBooking=new LinkedList<Datime>();
 	}
 
+	/**
+	*A method to know if two rooms are same
+	*@param o the room which is to be compared to
+	*@return true if they're same, false otherwise
+	*/
 	@Override
 	public boolean equals(Object o){
 
@@ -20,11 +31,19 @@ public class Room implements Serializable{
 
 	}
 
+	/**
+	*Getter method for accessing the room name
+	*@return name of room
+	*/
 	public String getRoom()
 	{
 		return Name;
 	}
-
+	
+	/**
+	*A method to display room's schedule
+	*@param Week week number
+	*/
 	public void Show(int Week)
 	{
 		Time T = new Time();
@@ -37,10 +56,22 @@ public class Room implements Serializable{
 				System.out.println();
 			}
 	}
+
+	/**
+	*Getter method for accessing bookings apart from regular classes in the room
+	*@return Linked List of bookings apart from regular classes in the room
+	*/
 	public LinkedList<Datime> getBook()
 	{
 		return SpecialBooking;
 	}
+
+	/**
+	*A method for checking if the room is available
+	*@param time Time period for which availability is to be checked
+	*@param date Date on which availability is to be checked
+	*@return true if available, false otherwise
+	*/
 	public boolean CheckClash(String time,String date)
 	{//returns true if available 
 		Datime D=new Datime(date,time);
@@ -143,11 +174,20 @@ public class Room implements Serializable{
 
 	}
 */
+	/**
+	*A method for booking the room
+	*@param time Time period for which the room is to be booked
+	*@param date Date on which room is to be booked
+	*/
 	public void book(String time, String date){
 		Datime M=new Datime(date,time); 
 		SpecialBooking.add(M);
 	}
 
+	/**
+	*A method for cancelling bookings
+	*@param a Time and Date on which the booking is to be cancelled
+	*/
 	public void cancel(Datime a){
 		SpecialBooking.remove(a);
 	}

@@ -1,7 +1,18 @@
 import java.lang.*;
 import java.io.*;
 import java.util.*;
+
+
+/**
+	*The Search class provides the personalised search results for each student who searches for courses depending upon his/her course list
+*/
 public class Search{
+
+	/**
+	*@param Succ the student searching for courses
+	*@param Q1 the kewords searched for
+	*@return an array list of String containing details of the courses.
+	*/
 	public ArrayList<String> ShowSearch(Student Succ,String Q1)
 	{
 		ArrayList<String> RetA=new ArrayList<String>();

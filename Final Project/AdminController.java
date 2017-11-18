@@ -416,12 +416,18 @@ public class AdminController
 
 	}
 
+	/**
+	*Action executed upon clicking the settings button
+	*/
 	@FXML
 	public void settings(){
 		homeView.setVisible(false);
 		settingsView.setVisible(true);
 	}
 
+	/**
+	*Action executed upon clicking the change password button
+	*/
 	@FXML
 	public void changePassword() throws Exception{
 		admin.setPassword(newPassword.getText());
@@ -431,7 +437,9 @@ public class AdminController
 		out.writeObject(adminList);
 	}
 
-
+	/**
+	*Action executed upon clicking the delete account button
+	*/
 	@FXML
 	public void delAccount() throws Exception{
 		adminList.remove(admin);
@@ -440,13 +448,20 @@ public class AdminController
 		logout();
 	}
 
+	/**
+	*Action executed upon clicking the return button
+	*/
 	@FXML
 	public void backToHome(){
 		settingsView.setVisible(false);
 		homeView.setVisible(true);
 	}
 
-
+	/**
+	*A method to pass on a specific user from different controllers
+	*@param s User whose dashboard is to be loaded
+	*@param adminList database of admins
+	*/
 	@FXML
 	public void setUp(Admin s, LinkedList<Admin> adminList) throws Exception{
 		this.admin = s;
@@ -520,6 +535,9 @@ public class AdminController
 
 	}
 
+	/**
+	*Action executed upon clicking the logout button
+	*/
 	@FXML
 	public void logout() throws Exception{
 		Stage stage =(Stage) logoutButton.getScene().getWindow(); 
@@ -529,6 +547,9 @@ public class AdminController
 		stage.show();
 	}
 
+	/**
+	*Action executed upon clicking the Check Availability button
+	*/
 	@FXML
 	public void checkAvail() throws Exception{
 try{
@@ -566,6 +587,9 @@ try{
 
 	}
 
+	/**
+	*Action executed upon clicking the Book Room button
+	*/
 	@FXML
 	public void bookButton() throws Exception{
 		try{
@@ -611,7 +635,9 @@ try{
 		
 	}
 
-
+	/**
+	*Action executed upon clicking the Cancel Booking button
+	*/
 	@FXML
 	public void cancelBookingAction() throws Exception{
 try{
@@ -649,7 +675,9 @@ try{
             
 	}
 
-
+	/**
+	*A method to display dates corresponding to the week
+	*/
 	@FXML
 	public void weekDates(int w){
 		switch(w){
@@ -729,6 +757,9 @@ try{
 		}
 	}
 
+	/**
+	*Action executed upon clicking the next week button
+	*/
 	@FXML 
 	public void nextWeek() throws Exception
 	{
@@ -756,6 +787,9 @@ try{
     catch(Exception e){}
 	}
 
+	/**
+	*Action executed upon clicking the previous week button
+	*/
 	@FXML 
 	public void prevWeek() throws Exception
 	{
@@ -783,6 +817,9 @@ try{
     catch(Exception e){}
 	}
 
+	/**
+	*Action executed upon selecting a room from the combo box
+	*/
 	@FXML 
 	public void loadRoom() throws Exception
 	{
@@ -804,6 +841,9 @@ try{
 	}
 
 
+	/**
+	*Action executed upon clicking the refresh button
+	*/
 	@FXML
 	public void refreshRequests() throws Exception{
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("requestedRooms.txt"));
@@ -830,6 +870,9 @@ try{
 
 	}
 
+	/**
+	*Action executed upon clicking the accept request button
+	*/
 	@FXML
 	public void acceptRequestAction() throws Exception{
 		try{
@@ -876,6 +919,9 @@ try{
 		}
 	}
 
+	/**
+	*Action executed upon clicking the reject request button
+	*/
 	@FXML
 	public void rejectRequestAction() throws Exception{
 		try{

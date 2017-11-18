@@ -2,8 +2,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
@@ -17,8 +15,6 @@ import java.io.*;
 import java.util.*;
 import java.io.FileInputStream;
 import java.io.IOException;
-
-import javafx.application.Application;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -29,93 +25,30 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollBar;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import java.time.LocalDate;
-
-import javafx.scene.control.ScrollBar;
-import javafx.geometry.Orientation;
-
 import javafx.beans.property.ReadOnlyStringWrapper;
-
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
-
-import javafx.scene.control.ComboBox;
-import javafx.collections.ObservableList;
-import javafx.collections.FXCollections;
 import java.util.Arrays;
-import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import javafx.util.Callback;
-import java.io.*;
-import java.util.*;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import javafx.scene.control.Label;
 import javafx.scene.Parent;
-
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxListCell;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import java.util.*;
 import java.io.*;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import javafx.scene.control.Label;
-import javafx.scene.Parent;
-import javafx.util.*;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.fxml.FXML;
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
@@ -153,6 +86,10 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.Parent;
 
+
+/**
+	*This is the controller class for faculty.fxml
+*/
 public class FacultyController
 {
 	Faculty faculty;
@@ -403,12 +340,19 @@ public class FacultyController
             });
 	}
 
+
+	/**
+	*Action executed upon clicking the settings button
+	*/
 	@FXML
 	public void settings(){
 		homeView.setVisible(false);
 		settingsView.setVisible(true);
 	}
 
+	/**
+	*Action executed upon clicking the change password button
+	*/
 	@FXML
 	public void changePassword() throws Exception{
 		faculty.setPassword(newPassword.getText());
@@ -419,6 +363,9 @@ public class FacultyController
 	}
 
 
+	/**
+	*Action executed upon clicking the delete account button
+	*/
 	@FXML
 	public void delAccount() throws Exception{
 		facultyList.remove(faculty);
@@ -427,13 +374,20 @@ public class FacultyController
 		logout();
 	}
 
+	/**
+	*Action executed upon clicking the return button
+	*/
 	@FXML
 	public void backToHome(){
 		settingsView.setVisible(false);
 		homeView.setVisible(true);
 	}
 
-
+	/**
+	*A method to pass on a specific user from different controllers
+	*@param s User whose dashboard is to be loaded
+	*@param facultyList database of faculty
+	*/
 	@FXML
 	public void setUp(Faculty s, LinkedList<Faculty> facultyList) throws Exception{
 		this.faculty = s;
@@ -496,6 +450,9 @@ public class FacultyController
 
 	}
 
+	/**
+	*Action executed upon clicking the logout button
+	*/
 	@FXML
 	public void logout() throws Exception{
 		Stage stage =(Stage) logoutButton.getScene().getWindow(); 
@@ -505,6 +462,9 @@ public class FacultyController
 		stage.show();
 	}
 
+	/**
+	*Action executed upon clicking the Check Availability button
+	*/
 	@FXML
 	public void checkAvail() throws Exception{
 		try{
@@ -541,6 +501,9 @@ public class FacultyController
 
 	}
 
+	/**
+	*Action executed upon clicking the Book Room button
+	*/
 	@FXML
 	public void bookButton() throws Exception{
 		try{
@@ -584,6 +547,9 @@ public class FacultyController
 		
 	}
 
+	/**
+	*Action executed upon clicking the Cancel Booking button
+	*/
 	@FXML
 	public void cancelBookingAction() throws Exception{
 		try{
@@ -621,6 +587,9 @@ public class FacultyController
             
 	}
 
+	/**
+	*Action executed upon clicking the next week button
+	*/
 	@FXML 
 	public void nextWeek() throws Exception
 	{
@@ -648,6 +617,9 @@ public class FacultyController
     catch(Exception e){}
 	}
 
+	/**
+	*Action executed upon clicking the previous week button
+	*/
 	@FXML 
 	public void prevWeek() throws Exception
 	{
@@ -675,6 +647,10 @@ public class FacultyController
     catch(Exception e){}
 	}
 
+
+	/**
+	*Action executed upon selecting a room from the combo box
+	*/
 	@FXML 
 	public void loadRoom() throws Exception
 	{
@@ -697,7 +673,10 @@ public class FacultyController
     catch(Exception e){}
 	}
 
-		@FXML
+	/**
+	*A method to display dates corresponding to the week
+	*/
+	@FXML
 	public void weekDates(int w){
 		switch(w){
 			case 1:{
