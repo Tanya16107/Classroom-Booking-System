@@ -22,10 +22,6 @@ import javafx.stage.Stage;
 
 import javafx.scene.Parent;
 
-/**
-	*This is the controller class for signup.fxml
-*/
-
 public class signUpController
 {
 	@FXML
@@ -49,22 +45,31 @@ public class signUpController
 	@FXML
 	Button signUpButton;
 
-	/**
-	*A method for ensuring that the user has selected his/her User type
-	*/
 	@FXML
 	private boolean userTypeSelected(){
 		return sel_admin.isSelected() || sel_student.isSelected() || sel_faculty.isSelected();
 	}
 
-
-	/**
-	*Action taken upon clicking the Sign Up button
-	*/
 	@FXML
 	public void signUp() throws Exception{
-
+	
 		if(emailID.getText().length()!=0 && password.getText().length()!=0 && name.getText().length()!=0 && userTypeSelected()){
+			String S1=emailID.getText();
+			boolean flag1=false;
+			int C=0;
+			for(int i=0;i<S1.length();i++)
+			{
+				if(S1.charAt(i)=='@')
+				{
+					flag1=true;
+					C++;
+				}
+			}	
+			if(C==1 && flag1)
+			{
+			String[] S2=S1.trim().split("@");
+			if(S2[1].equals("iiitd.ac.in"))
+			{	
 			if(sel_student.isSelected()){
 				Student newUser = new Student(emailID.getText(), password.getText(), name.getText());
 					
@@ -225,6 +230,22 @@ public class signUpController
 					}
 					return;
 			}
+			}
+				else
+				{
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setHeaderText(null);
+						alert.setContentText("Please sign up using IIIT-Delhi email");
+						alert.showAndWait();
+				}
+			}
+				else
+				{
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setHeaderText(null);
+						alert.setContentText("Please enter a valid email");
+						alert.showAndWait();
+				}	
 		}
 
 		else{
