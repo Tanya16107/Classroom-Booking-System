@@ -426,7 +426,7 @@
                            <content>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0">
                                  <children>
-                                    <ComboBox fx:id="roomCal" onAction="#loadRoom" prefHeight="27.0" prefWidth="100.0" promptText="C01">
+                                    <ComboBox fx:id="roomCal" onAction="#loadRoom" prefHeight="27.0" prefWidth="100.0" promptText="C01" style="-fx-background-color: white; -fx-border-color: #F46036;">
                                        <items>
                                           <FXCollections fx:factory="observableArrayList">
                                              <String fx:value="C01" />
@@ -457,7 +457,7 @@
                                        <children>
                                           <Button mnemonicParsing="false" onAction="#prevWeek" style="-fx-background-color: white;">
                                              <graphic>
-                                                <FontAwesomeIconView fill="#26547c" glyphName="ANGLE_DOUBLE_LEFT" size="25" />
+                                                <FontAwesomeIconView fill="#f46036" glyphName="ANGLE_DOUBLE_LEFT" size="25" />
                                              </graphic>
                                           </Button>
                                           <Label text="Week" textFill="#26547c">
@@ -478,7 +478,7 @@
                                           </Label>
                                           <Button mnemonicParsing="false" onAction="#nextWeek" style="-fx-background-color: white;">
                                              <graphic>
-                                                <FontAwesomeIconView fill="#26547c" glyphName="ANGLE_DOUBLE_RIGHT" size="25" />
+                                                <FontAwesomeIconView fill="#f46036" glyphName="ANGLE_DOUBLE_RIGHT" size="25" />
                                              </graphic>
                                           </Button>
                                        </children>
