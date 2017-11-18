@@ -881,20 +881,20 @@ try{
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("requestedRooms.txt"));
 		LinkedList<RequestedRoom> requestedRooms = (LinkedList<RequestedRoom>) in.readObject();
 
-		RequestedRoom r = null;
+		RequestedRoom rr = null;
 
             for(int i=0;i<requestedRooms.size();i++)
             {
             	if(requestedRooms.get(i).toString().equals(S1))
             	{
             		
-         			r = requestedRooms.get(i);
+         			rr = requestedRooms.get(i);
          			break;
             		//System.out.println(requestedRooms.get(i).getStatus());
             	}
             }
 
-            if(r!=null){
+            if(rr!=null){
 
             TextInputDialog dialog = new TextInputDialog("");
             dialog.setTitle("Accept Request");
@@ -904,20 +904,52 @@ try{
             Optional<String> result = dialog.showAndWait();
 			
 			if (result.isPresent()){
-			   r.setStatus("Accepted");
-   			   r.setRoom(result.get());
+				in = new ObjectInputStream(new FileInputStream("roomsList.txt"));
+				LinkedList<Room> roomsList = (LinkedList<Room>) in.readObject();
+			     Room r = (Room)roomsList.get(roomsList.indexOf(new Room(result.get())));
+
+                    if(r.CheckClash(rr.getTime(), rr.getDate())){
+                        r.book(rr.getTime(), rr.getDate());
+                        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("roomsList.txt"));
+                        out.writeObject(roomsList);
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setTitle(null);
+                        alert.setHeaderText(null);
+                        alert.setContentText("Done!");
+                        rr.setStatus("Accepted");
+                        rr.setRoom(result.get());
+                        alert.showAndWait();
+                        out = null;
+                        out = new ObjectOutputStream(new FileOutputStream("requestedRooms.txt"));
+                        out.writeObject(requestedRooms);
+                        refreshRequests();
+
+                    }
+
+                    else
+                        {
+                        Alert alert = new Alert(AlertType.WARNING);
+                        alert.setTitle(null);
+                        alert.setHeaderText(null);
+                        alert.setContentText("Room Unavailable!");
+                        alert.showAndWait();}
+
+            }
+               
+   			   
+
 			}
             
-            ObjectOutputStream out = null;
-			out = new ObjectOutputStream(new FileOutputStream("requestedRooms.txt"));
-			out.writeObject(requestedRooms);
-			refreshRequests();
+            
 			}
-		}
+		
 		catch(Exception e){
 
 		}
 	}
+
+
+        
 
 	/**
 	*Action executed upon clicking the reject request button
