@@ -355,7 +355,7 @@
                         </Tab>
                         <Tab closable="false" style="-fx-background-color: white;" text="My Bookings">
                            <content>
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                                  <children>
                                     <ListView fx:id="bookingsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: white;" VBox.vgrow="ALWAYS" />
                                     <Button mnemonicParsing="false" onAction="#cancelBookingAction" style="-fx-background-color: white;" text="Cancel Booking" textFill="RED" textOverrun="CLIP">

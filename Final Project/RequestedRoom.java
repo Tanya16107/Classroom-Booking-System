@@ -31,8 +31,10 @@ public class RequestedRoom implements Serializable{
 		this.date = date;
 		this.time = time;
 		validTill = LocalDateTime.now().plusDays(5);
+	}
 
-
+	public void setRoom(String s){
+		preferredRoom = s;
 	}
 
 

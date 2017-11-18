@@ -838,30 +838,42 @@ try{
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("requestedRooms.txt"));
 		LinkedList<RequestedRoom> requestedRooms = (LinkedList<RequestedRoom>) in.readObject();
 
+		RequestedRoom r = null;
 
             for(int i=0;i<requestedRooms.size();i++)
             {
             	if(requestedRooms.get(i).toString().equals(S1))
             	{
-            		requestedRooms.get(i).setStatus("Accepted");
-         
+            		
+         			r = requestedRooms.get(i);
+         			break;
             		//System.out.println(requestedRooms.get(i).getStatus());
             	}
             }
 
+            if(r!=null){
+
+            TextInputDialog dialog = new TextInputDialog("");
+            dialog.setTitle("Accept Request");
+            dialog.setHeaderText(null);
+            dialog.setContentText("Allotted Room:");
+
+            Optional<String> result = dialog.showAndWait();
+			
+			if (result.isPresent()){
+			   r.setStatus("Accepted");
+   			   r.setRoom(result.get());
+			}
             
-
-
             ObjectOutputStream out = null;
 			out = new ObjectOutputStream(new FileOutputStream("requestedRooms.txt"));
 			out.writeObject(requestedRooms);
 			refreshRequests();
+			}
 		}
 		catch(Exception e){
 
 		}
-
-
 	}
 
 	@FXML
